@@ -1,0 +1,120 @@
+/* Optional Field Display Utilities */
+
+/* Dynamic spacing that adjusts when fields are conditionally hidden */
+.optional-field-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.optional-field-container > *:not(:last-child) {
+  margin-bottom: 0.5rem; /* 8px */
+}
+
+.optional-field-container.compact > *:not(:last-child) {
+  margin-bottom: 0.25rem; /* 4px */
+}
+
+.optional-field-container.spacious > *:not(:last-child) {
+  margin-bottom: 0.75rem; /* 12px */
+}
+
+/* Remove empty space when optional fields are hidden */
+.optional-field-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.optional-field-item:empty {
+  display: none;
+}
+
+/* Address display specific styles */
+.address-display {
+  line-height: 1.4;
+}
+
+.address-display .address-line {
+  display: block;
+}
+
+.address-display .address-line:empty {
+  display: none;
+}
+
+/* Shipping info specific styles */
+.shipping-info-display {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.shipping-info-display .shipping-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.shipping-info-display .shipping-field:empty {
+  display: none;
+}
+
+/* Order details layout improvements */
+.order-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .order-details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Prevent layout shift when optional fields are loaded */
+.order-details-section {
+  min-height: fit-content;
+}
+
+.order-details-section.loading {
+  min-height: 4rem;
+}
+
+/* Animation for smooth field appearance */
+.optional-field-fade-in {
+  animation: fadeInField 0.3s ease-in-out;
+}
+
+@keyframes fadeInField {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility classes for conditional spacing */
+.space-y-conditional > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-y-conditional > *:empty + * {
+  margin-top: 0;
+}
+
+/* Responsive spacing adjustments */
+@media (max-width: 640px) {
+  .optional-field-container > *:not(:last-child) {
+    margin-bottom: 0.375rem; /* 6px on mobile */
+  }
+  
+  .shipping-info-display {
+    padding: 0.75rem;
+  }
+}

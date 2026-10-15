@@ -1,0 +1,653 @@
+/* Enhanced Shipping Display Animations and Responsive Utilities for Frontend */
+
+/* Improved fade in animation with better easing */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Smooth slide in from left for mobile */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Bounce animation for interactive elements */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.shipping-fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Staggered animation for shipping info cards */
+.shipping-card-1 {
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.shipping-card-2 {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.shipping-card-3 {
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+/* Enhanced shipping info display styling with improved accessibility */
+.shipping-info-container {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Enhanced loading state with skeleton animation */
+.shipping-info-container.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Success state with subtle glow */
+.shipping-info-container.success {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.shipping-info-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+  border-radius: 12px 12px 0 0;
+}
+
+.shipping-info-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+/* Focus state for keyboard navigation */
+.shipping-info-container:focus-within {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+  border-color: #3b82f6;
+}
+
+.shipping-info-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1.125rem;
+}
+
+.shipping-info-icon {
+  width: 24px;
+  height: 24px;
+  color: #3b82f6;
+  animation: pulse 2s infinite;
+}
+
+.shipping-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+/* Enhanced grid for mobile */
+@media (max-width: 640px) {
+  .shipping-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.shipping-detail-item {
+  background: white;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.shipping-detail-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.shipping-detail-item:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+.shipping-detail-item:hover::before {
+  transform: scaleX(1);
+}
+
+/* Interactive states for touch devices */
+.shipping-detail-item:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.1);
+}
+
+.shipping-detail-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.shipping-detail-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  word-break: break-all;
+}
+
+.shipping-status-fallback {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.shipping-status-fallback .status-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #92400e;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.shipping-status-fallback .status-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #92400e;
+}
+/* Pul
+se animation for loading states */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.shipping-loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Smooth transitions for shipping info updates */
+.shipping-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+.shipping-transition:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Success animation for saved shipping info */
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+    background-color: #10b981;
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: #059669;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #10b981;
+  }
+}
+
+.shipping-success {
+  animation: successPulse 0.6s ease-in-out;
+}
+
+/* Enhanced responsive utilities for shipping display */
+@media (max-width: 1024px) {
+  .shipping-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .shipping-info-container {
+    padding: 1.25rem;
+  }
+  
+  .shipping-info-header {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .shipping-mobile-stack {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .shipping-mobile-full {
+    width: 100%;
+  }
+  
+  .shipping-mobile-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .shipping-info-container {
+    padding: 1rem;
+    margin: 0.75rem 0;
+  }
+  
+  .shipping-detail-item {
+    padding: 0.75rem;
+  }
+  
+  .shipping-detail-label {
+    font-size: 0.75rem;
+  }
+  
+  .shipping-detail-value {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .shipping-sm-hidden {
+    display: none;
+  }
+  
+  .shipping-sm-block {
+    display: block;
+  }
+  
+  .shipping-sm-text-xs {
+    font-size: 0.75rem;
+  }
+  
+  .shipping-info-container {
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+  
+  .shipping-info-header {
+    font-size: 0.875rem;
+    gap: 0.5rem;
+  }
+  
+  .shipping-info-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .shipping-detail-grid {
+    gap: 0.5rem;
+  }
+  
+  .shipping-detail-item {
+    padding: 0.5rem;
+  }
+}
+
+/* Enhanced focus states and accessibility */
+.shipping-focus:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+.shipping-focus:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .shipping-info-container {
+    border: 3px solid #000;
+    background: #fff;
+  }
+  
+  .shipping-detail-item {
+    border: 2px solid #000;
+  }
+  
+  .shipping-detail-label {
+    color: #000;
+    font-weight: 700;
+  }
+  
+  .shipping-detail-value {
+    color: #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .shipping-fade-in,
+  .shipping-card-1,
+  .shipping-card-2,
+  .shipping-card-3,
+  .shipping-transition,
+  .shipping-info-container,
+  .shipping-detail-item {
+    animation: none;
+    transition: none;
+  }
+  
+  .shipping-info-icon {
+    animation: none;
+  }
+}
+
+/* Screen reader only content */
+.shipping-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keyboard navigation indicators */
+.shipping-keyboard-nav:focus {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+/* Loading state accessibility */
+.shipping-loading[aria-busy="true"] {
+  position: relative;
+}
+
+.shipping-loading[aria-busy="true"]::after {
+  content: 'Loading shipping information...';
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Loading skeleton animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shipping-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Error state animation */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+.shipping-error {
+  animation: shake 0.5s ease-in-out;
+  border-color: #ef4444;
+}
+
+/* Enhanced button styles for shipping actions */
+.shipping-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.shipping-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.shipping-button:hover::before {
+  left: 100%;
+}
+
+.shipping-button-primary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.shipping-button-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+.shipping-button-secondary {
+  background: white;
+  color: #6b7280;
+  border-color: #d1d5db;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.shipping-button-secondary:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.shipping-button:disabled::before {
+  display: none;
+}
+
+/* Copy button with enhanced feedback */
+.shipping-copy-button {
+  position: relative;
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.shipping-copy-button:hover {
+  background: #e5e7eb;
+  color: #374151;
+  border-color: #9ca3af;
+}
+
+.shipping-copy-button.copied {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #16a34a;
+}
+
+.shipping-copy-button.copied::after {
+  content: '✓ Copied!';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #166534;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Enhanced loading states */
+.shipping-loading-button {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.shipping-loading-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Smooth height transitions for collapsible content */
+.shipping-collapse {
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s ease-in-out,
+              padding 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.shipping-collapse.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.shipping-collapse.expanded {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* Enhanced tooltip styles */
+.shipping-tooltip {
+  position: absolute;
+  z-index: 50;
+  background: #1f2937;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.shipping-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #1f2937;
+}
+
+.shipping-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}

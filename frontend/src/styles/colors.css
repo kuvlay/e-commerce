@@ -1,0 +1,276 @@
+/* Premium E-Commerce Color Palette - Orange & Cream Theme */
+/* Modern, vibrant colors designed for contemporary shopping experience */
+
+:root {
+  /* === PREMIUM BRAND COLORS === */
+  
+  /* Primary Brand Colors - Orange Tones */
+  --primary-50: #FFF8F5;          /* Very light orange tint */
+  --primary-100: #FFF3E0;         /* Light orange background */
+  --primary-500: #FF6B35;         /* Vibrant orange - main brand */
+  --primary-600: #E64A19;         /* Dark orange */
+  --primary-700: #FF9800;         /* Amber orange */
+  
+  /* Accent Colors - Golden & Amber */
+  --accent-50: #FFF8F5;           /* Very light orange tint */
+  --accent-100: #FFF3E0;          /* Light orange background */
+  --accent-500: #FFC107;          /* Golden accent */
+  --accent-600: #FF9800;          /* Amber orange */
+  
+  /* Success & Trust - Orange Success */
+  --success-50: #FFF8F5;          /* Very light orange tint */
+  --success-500: #FF9800;         /* Amber orange */
+  --success-600: #E64A19;         /* Dark orange */
+  
+  /* Warning - Golden Amber */
+  --warning-500: #FFC107;         /* Golden accent */
+  --warning-600: #FF9800;         /* Amber orange */
+  
+  /* Neutral Colors - Cream & Brown Tones */
+  --neutral-50: #FFFFFF;          /* Pure white */
+  --neutral-100: #F5F5F5;         /* Very light gray */
+  --neutral-200: #EEEEEE;         /* Light gray */
+  --neutral-300: #E0E0E0;         /* Medium light gray */
+  --neutral-400: #BDBDBD;         /* Medium gray */
+  --neutral-500: #9E9E9E;         /* Gray */
+  --neutral-600: #757575;         /* Dark gray */
+  --neutral-700: #616161;         /* Darker gray */
+  --neutral-800: #424242;         /* Very dark gray */
+  --neutral-900: #212121;         /* Almost black */
+  
+  /* === SEMANTIC ASSIGNMENTS === */
+  
+  /* Backgrounds */
+  --bg-primary: #FFFFFF;          /* Pure white */
+  --bg-secondary: var(--primary-50);  /* Very light orange tint */
+  --bg-tertiary: var(--primary-100);   /* Light orange background */
+  --bg-accent: var(--accent-50);      /* Very light orange tint */
+  
+  /* Text Colors */
+  --text-primary: #3E2723;        /* Dark brown for text */
+  --text-secondary: #5D4037;      /* Medium brown */
+  --text-tertiary: #8D6E63;       /* Muted brown */
+  --text-muted: var(--neutral-400);       /* Light gray */
+  --text-inverse: #FFFFFF;                 /* White */
+  --text-brand: var(--primary-500);       /* Vibrant orange */
+  --text-accent: var(--accent-500);       /* Golden accent */
+  
+  /* Borders */
+  --border-light: var(--neutral-200);     /* Light border */
+  --border-medium: var(--neutral-300);    /* Medium border */
+  --border-strong: var(--neutral-400);    /* Strong border */
+  --border-brand: var(--primary-500);     /* Orange border */
+  
+  /* Interactive States */
+  --hover-bg: var(--primary-50);          /* Light orange hover background */
+  --hover-border: var(--primary-500);     /* Orange hover border */
+  --focus-ring: var(--primary-500);       /* Orange focus ring color */
+  
+  /* Shadows - Subtle & Modern */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Component Specific */
+  --card-bg: var(--bg-primary);
+  --card-border: var(--border-light);
+  --input-bg: var(--bg-primary);
+  --input-border: var(--border-medium);
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --footer-bg: var(--primary-500);
+  
+  /* Gradients - Orange & Cream Theme */
+  --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-600) 100%);
+  --gradient-success: linear-gradient(135deg, var(--success-500) 0%, var(--success-600) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  --gradient-background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
+}
+
+/* === UTILITY CLASSES === */
+
+/* Text Colors */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-muted { color: var(--text-muted); }
+.text-inverse { color: var(--text-inverse); }
+.text-brand { color: var(--text-brand); }
+.text-accent { color: var(--text-accent); }
+.text-success { color: var(--success-500); }
+.text-warning { color: var(--warning-500); }
+
+/* Background Colors */
+.bg-primary { background: var(--bg-primary); }
+.bg-secondary { background: var(--bg-secondary); }
+.bg-tertiary { background: var(--bg-tertiary); }
+.bg-accent { background: var(--bg-accent); }
+
+/* Modern Button Styles */
+.btn-primary { 
+  background: var(--primary-500);
+  color: var(--text-inverse);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.025em;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--primary-600);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-secondary { 
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.025em;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-50); /* Light orange tint */
+  border-color: var(--primary-500); /* Vibrant orange */
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:active {
+  background: var(--primary-100); /* Darker orange for pressed state */
+  border-color: var(--primary-600); /* Dark orange border */
+  color: var(--text-primary);
+  transform: translateY(0px); /* Remove lift effect when pressed */
+}
+
+.btn-secondary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2); /* Orange focus ring */
+  border-color: var(--primary-500);
+}
+
+.btn-accent { 
+  background: var(--accent-500);
+  color: var(--text-inverse);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.025em;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-accent:hover {
+  background: var(--accent-600);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Fix for cart button hover animation conflicts */
+.btn-accent.cart-buy-now {
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-accent.cart-buy-now:hover {
+  background: var(--accent-600);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  /* Override any conflicting transforms */
+}
+
+/* Ensure consistent hover behavior across all btn-accent buttons */
+.btn-accent:hover {
+  /* Prevent transform conflicts with hover-lift */
+  transform: translateY(-1px) !important;
+}
+
+/* Modern Card Styles */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--border-medium);
+}
+
+.card-premium {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card-premium:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+/* Modern Input Styles */
+.input {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Shadow Utilities */
+.shadow-xs { box-shadow: var(--shadow-xs); }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Interactive States */
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Smooth Transitions - Scoped to specific components */
+button, a, .btn-primary, .btn-secondary, .btn-accent, .card, .input {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}

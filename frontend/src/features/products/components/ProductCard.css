@@ -1,0 +1,51 @@
+/* ProductCard Button Animation Styles */
+
+/* Add to Cart Button Hover Effects */
+.product-card-add-btn:not(:disabled):hover {
+  background-color: #E64A19 !important; /* COLORS.primaryDark */
+  box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4) !important; /* SHADOWS.cardOrangeHover */
+  transform: scale(1.02) !important;
+}
+
+.product-card-add-btn:not(:disabled):active {
+  transform: scale(0.98) !important;
+}
+
+/* Buy Now Button Hover Effects */
+.product-card-buy-btn:not(:disabled):hover {
+  background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%) !important; /* GRADIENTS.accent */
+  box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4) !important; /* SHADOWS.cardOrangeHover */
+  transform: scale(1.02) !important;
+}
+
+.product-card-buy-btn:not(:disabled):active {
+  transform: scale(0.98) !important;
+}
+
+/* Disabled State Consistency */
+.product-card-add-btn:disabled,
+.product-card-buy-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Smooth Transitions for All States */
+.product-card-add-btn,
+.product-card-buy-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Prevent Animation Conflicts During State Changes */
+.product-card-add-btn.loading,
+.product-card-buy-btn.loading {
+  pointer-events: none;
+  transform: none !important;
+}
+
+/* Focus States for Accessibility */
+.product-card-add-btn:focus-visible,
+.product-card-buy-btn:focus-visible {
+  outline: 2px solid #FF6B35;
+  outline-offset: 2px;
+}

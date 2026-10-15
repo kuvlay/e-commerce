@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/src/assets/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kharido - Premium E-commerce Store" />
+  <title>Kharido - Premium Products</title>
+</head>
+
+<body>
+  <div id="root">
+    <div
+      style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif;">
+      <div style="text-align: center;">
+        <div style="font-size: 24px; margin-bottom: 16px;">Loading Kharido...</div>
+        <div
+          style="width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #f97316; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;">
+        </div>
+      </div>
+    </div>
+    <style>
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </div>
+  <!-- Dispatch a custom event when Google Identity script loads to trigger initialization in Login.jsx -->
+  <script src="https://accounts.google.com/gsi/client" async defer
+    onload="window.dispatchEvent(new Event('google-loaded'))"></script>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

@@ -1,0 +1,931 @@
+/* Admin Shipping Management Animations and Responsive Design */
+
+/* Fade in animation for shipping forms */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-shipping-fade-in {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Enhanced form styling for shipping info with improved UX */
+.admin-shipping-form {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Enhanced loading overlay */
+.admin-shipping-form.loading {
+  pointer-events: none;
+}
+
+.admin-shipping-form.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+  border-radius: 16px;
+}
+
+.admin-shipping-form.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 11;
+}
+
+.admin-shipping-form:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.admin-shipping-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-shipping-form-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-shipping-status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.admin-shipping-status-indicator.available {
+  background-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.admin-shipping-status-indicator.restricted {
+  background-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.admin-shipping-status-indicator.disabled {
+  background-color: #6b7280;
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.2);
+}
+
+.admin-shipping-input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-shipping-input-wrapper {
+  position: relative;
+}
+
+.admin-shipping-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #ffffff;
+  position: relative;
+}
+
+/* Enhanced input states */
+.admin-shipping-input::placeholder {
+  color: #9ca3af;
+  transition: color 0.2s ease-in-out;
+}
+
+.admin-shipping-input:focus::placeholder {
+  color: #d1d5db;
+}
+
+.admin-shipping-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Enhanced focus ring for better accessibility */
+.admin-shipping-input:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.admin-shipping-input:disabled {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.admin-shipping-input-label {
+  position: absolute;
+  top: -0.5rem;
+  left: 0.75rem;
+  background-color: #ffffff;
+  padding: 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-shipping-input:focus + .admin-shipping-input-label,
+.admin-shipping-input:not(:placeholder-shown) + .admin-shipping-input-label {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.admin-shipping-button-group {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.admin-shipping-button {
+  padding: 0.875rem 1.75rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 130px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button shine effect */
+.admin-shipping-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.admin-shipping-button:hover::before {
+  left: 100%;
+}
+
+.admin-shipping-button-primary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #ffffff;
+  border-color: #3b82f6;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.admin-shipping-button-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.admin-shipping-button-primary:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(59, 130, 246, 0.3);
+}
+
+.admin-shipping-button-secondary {
+  background-color: #ffffff;
+  color: #6b7280;
+  border-color: #d1d5db;
+}
+
+.admin-shipping-button-secondary:hover:not(:disabled) {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.admin-shipping-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.admin-shipping-disabled-message {
+  background-color: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  color: #92400e;
+  font-weight: 500;
+}
+
+.admin-shipping-disabled-message-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto 0.5rem;
+  color: #f59e0b;
+}
+
+/* Loading animation for save operations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.admin-shipping-loading {
+  animation: spin 1s linear infinite;
+}
+
+/* Success pulse animation */
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+    background-color: #10b981;
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: #059669;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #10b981;
+  }
+}
+
+.admin-shipping-success {
+  animation: successPulse 0.6s ease-in-out;
+}
+
+/* Error shake animation */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+.admin-shipping-error {
+  animation: shake 0.5s ease-in-out;
+  border-color: #ef4444 !important;
+}
+
+/* Smooth transitions for form elements */
+.admin-shipping-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+.admin-shipping-transition:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced responsive utilities for admin interface */
+@media (max-width: 1200px) {
+  .admin-shipping-input-group {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .admin-shipping-button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .admin-shipping-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .admin-shipping-lg-stack {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .admin-shipping-lg-full {
+    width: 100%;
+  }
+  
+  .admin-shipping-lg-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .admin-shipping-form {
+    padding: 1.25rem;
+  }
+  
+  .admin-shipping-form-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-shipping-md-stack {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .admin-shipping-md-full {
+    width: 100%;
+  }
+  
+  .admin-shipping-md-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .admin-shipping-md-hidden {
+    display: none;
+  }
+  
+  .admin-shipping-md-block {
+    display: block;
+  }
+  
+  .admin-shipping-form {
+    padding: 1rem;
+    margin: 0.75rem 0;
+  }
+  
+  .admin-shipping-input {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+  
+  .admin-shipping-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8125rem;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-shipping-sm-stack {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .admin-shipping-sm-full {
+    width: 100%;
+  }
+  
+  .admin-shipping-sm-text-xs {
+    font-size: 0.75rem;
+  }
+  
+  .admin-shipping-sm-hidden {
+    display: none;
+  }
+  
+  .admin-shipping-sm-block {
+    display: block;
+  }
+  
+  .admin-shipping-form {
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+  
+  .admin-shipping-form-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .admin-shipping-form-title {
+    font-size: 0.875rem;
+  }
+  
+  .admin-shipping-input-group {
+    gap: 0.5rem;
+  }
+  
+  .admin-shipping-input {
+    padding: 0.5rem 0.625rem;
+    font-size: 0.75rem;
+  }
+  
+  .admin-shipping-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    min-width: 80px;
+  }
+  
+  .admin-shipping-button-group {
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+}
+
+/* Enhanced focus states and accessibility */
+.admin-shipping-focus:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+.admin-shipping-focus:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2);
+}
+
+/* Keyboard navigation support */
+.admin-shipping-keyboard-nav {
+  position: relative;
+}
+
+.admin-shipping-keyboard-nav:focus {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+/* Screen reader support */
+.admin-shipping-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .admin-shipping-form {
+    border: 3px solid #000;
+    background: #fff;
+  }
+  
+  .admin-shipping-input {
+    border: 2px solid #000;
+  }
+  
+  .admin-shipping-button-primary {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+  }
+  
+  .admin-shipping-button-secondary {
+    background-color: #fff;
+    border-color: #000;
+    color: #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .admin-shipping-fade-in,
+  .admin-shipping-transition,
+  .admin-shipping-form,
+  .admin-shipping-input,
+  .admin-shipping-button {
+    animation: none;
+    transition: none;
+  }
+  
+  .admin-shipping-loading {
+    animation: none;
+  }
+  
+  .admin-shipping-success,
+  .admin-shipping-error {
+    animation: none;
+  }
+}
+
+/* Loading skeleton for order rows */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.admin-shipping-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Hover effects for interactive elements */
+.admin-shipping-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Status indicator animations */
+.admin-shipping-status-pending {
+  background-color: #fbbf24;
+  animation: pulse 2s infinite;
+}
+
+.admin-shipping-status-saved {
+  background-color: #10b981;
+}
+
+.admin-shipping-status-error {
+  background-color: #ef4444;
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Form validation states */
+.admin-shipping-input-valid {
+  border-color: #10b981;
+  background-color: #f0fdf4;
+}
+
+.admin-shipping-input-invalid {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+/* Collapsible content animations */
+.admin-shipping-collapse {
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.admin-shipping-collapse.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.admin-shipping-collapse.expanded {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* Enhanced loading states and confirmations */
+.admin-shipping-btn-loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.admin-shipping-btn-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.admin-shipping-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  z-index: 10;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Enhanced loading spinner with pulsing effect */
+.admin-shipping-loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-shipping-loading-pulse {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: relative;
+}
+
+.admin-shipping-loading-pulse::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid rgba(59, 130, 246, 0.2);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.admin-shipping-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.admin-shipping-loading-text {
+  margin-left: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Success confirmation animations */
+@keyframes successCheckmark {
+  0% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+.admin-shipping-success-indicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: successPulse 0.6s ease-in-out;
+}
+
+.admin-shipping-success-checkmark {
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(45deg);
+  animation: successCheckmark 0.4s ease-in-out 0.2s both;
+}
+
+.admin-shipping-success-message {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border: 2px solid #10b981;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #065f46;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  animation: bounceIn 0.6s ease-out;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+}
+
+.admin-shipping-success-message::before {
+  content: '✅';
+  font-size: 1.25rem;
+  animation: successCheckmark 0.4s ease-in-out 0.2s both;
+}
+
+.admin-shipping-error-message {
+  background: linear-gradient(135deg, #fef2f2, #fecaca);
+  border: 2px solid #ef4444;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #991b1b;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  animation: shake 0.5s ease-in-out;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+}
+
+.admin-shipping-error-message::before {
+  content: '⚠️';
+  font-size: 1.25rem;
+  animation: shake 0.3s ease-in-out;
+}
+
+.admin-shipping-retry-indicator {
+  background-color: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #92400e;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.admin-shipping-retry-progress {
+  width: 100%;
+  height: 4px;
+  background-color: #fde68a;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.admin-shipping-retry-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  transition: width 0.1s linear;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-shipping-retry-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+/* Enhanced retry indicator with countdown */
+.admin-shipping-retry-countdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #92400e;
+  font-weight: 500;
+  margin-top: 0.75rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.admin-shipping-retry-countdown-number {
+  background: #f59e0b;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Validation feedback */
+.admin-shipping-validation-message {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.admin-shipping-validation-error {
+  color: #dc2626;
+}
+
+.admin-shipping-validation-warning {
+  color: #d97706;
+}
+
+.admin-shipping-validation-success {
+  color: #059669;
+}
+
+.admin-shipping-validation-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* Tooltip animations */
+.admin-shipping-tooltip {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.admin-shipping-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Progress indicators */
+.admin-shipping-progress {
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+.admin-shipping-progress.complete {
+  width: 100%;
+}
+
+/* Notification badges */
+.admin-shipping-badge {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.admin-shipping-badge.show {
+  transform: scale(1);
+}
+
+/* Table row animations */
+.admin-shipping-row {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.admin-shipping-row:hover {
+  background-color: #f9fafb;
+}
+
+.admin-shipping-row.highlight {
+  background-color: #fef3c7;
+  animation: fadeInUp 0.5s ease-out;
+}

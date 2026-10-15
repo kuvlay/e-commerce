@@ -1,0 +1,343 @@
+/**
+ * CSS Custom Properties for Animation Consistency
+ * These variables ensure consistent timing and easing across all animations
+ */
+
+:root {
+  /* Animation Durations */
+  --animation-duration-fast: 0.2s;
+  --animation-duration-normal: 0.3s;
+  --animation-duration-slow: 0.5s;
+  --animation-duration-page: 0.4s;
+  --animation-duration-hover: 0.15s;
+  --animation-duration-bounce: 0.6s;
+
+  /* CSS Easing Functions */
+  --animation-easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-easing-smooth-in: cubic-bezier(0.4, 0, 1, 1);
+  --animation-easing-smooth-out: cubic-bezier(0, 0, 0.2, 1);
+  --animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animation-easing-quick: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --animation-easing-gentle: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* Transform Values */
+  --animation-scale-hover: 1.02;
+  --animation-scale-press: 0.98;
+  --animation-translate-y: 20px;
+  --animation-translate-x: 30px;
+
+  /* Opacity Values */
+  --animation-opacity-hidden: 0;
+  --animation-opacity-visible: 1;
+  --animation-opacity-dimmed: 0.7;
+
+  /* Stagger Delays */
+  --animation-stagger-cards: 0.1s;
+  --animation-stagger-text: 0.05s;
+  --animation-stagger-buttons: 0.15s;
+  --animation-stagger-list: 0.08s;
+  --animation-stagger-grid: 0.12s;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --animation-duration-fast: 0.01s;
+    --animation-duration-normal: 0.01s;
+    --animation-duration-slow: 0.01s;
+    --animation-duration-page: 0.01s;
+    --animation-duration-hover: 0.01s;
+    --animation-duration-bounce: 0.01s;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base Animation Classes */
+.animate-fade-in {
+  opacity: var(--animation-opacity-hidden);
+  animation: fadeIn var(--animation-duration-normal) var(--animation-easing-smooth) forwards;
+}
+
+.animate-fade-in-up {
+  opacity: var(--animation-opacity-hidden);
+  transform: translateY(var(--animation-translate-y));
+  animation: fadeInUp var(--animation-duration-normal) var(--animation-easing-smooth) forwards;
+}
+
+.animate-fade-in-left {
+  opacity: var(--animation-opacity-hidden);
+  transform: translateX(var(--animation-translate-x));
+  animation: fadeInLeft var(--animation-duration-normal) var(--animation-easing-smooth) forwards;
+}
+
+.animate-scale-hover {
+  transition: transform var(--animation-duration-hover) var(--animation-easing-quick);
+}
+
+.animate-scale-hover:hover {
+  transform: scale(var(--animation-scale-hover));
+}
+
+.animate-button-press {
+  transition: transform var(--animation-duration-fast) var(--animation-easing-quick);
+}
+
+.animate-button-press:active {
+  transform: scale(var(--animation-scale-press));
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: var(--animation-opacity-hidden);
+  }
+  to {
+    opacity: var(--animation-opacity-visible);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: var(--animation-opacity-hidden);
+    transform: translateY(var(--animation-translate-y));
+  }
+  to {
+    opacity: var(--animation-opacity-visible);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: var(--animation-opacity-hidden);
+    transform: translateX(var(--animation-translate-x));
+  }
+  to {
+    opacity: var(--animation-opacity-visible);
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility Classes */
+.animate-pulse {
+  animation: pulse var(--animation-duration-slow) var(--animation-easing-smooth) infinite;
+}
+
+.animate-bounce {
+  animation: bounce var(--animation-duration-bounce) var(--animation-easing-bounce);
+}
+
+.animate-shake {
+  animation: shake var(--animation-duration-fast) var(--animation-easing-smooth);
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Loading States */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading var(--animation-duration-slow) ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Transition Utilities */
+.transition-smooth {
+  transition: all var(--animation-duration-normal) var(--animation-easing-smooth);
+}
+
+.transition-quick {
+  transition: all var(--animation-duration-fast) var(--animation-easing-quick);
+}
+
+.transition-slow {
+  transition: all var(--animation-duration-slow) var(--animation-easing-gentle);
+}
+
+/* Focus and Hover States */
+.focus-ring {
+  transition: box-shadow var(--animation-duration-fast) var(--animation-easing-smooth);
+}
+
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+/* Stagger Animation Delays */
+.stagger-1 { animation-delay: calc(var(--animation-stagger-cards) * 1); }
+.stagger-2 { animation-delay: calc(var(--animation-stagger-cards) * 2); }
+.stagger-3 { animation-delay: calc(var(--animation-stagger-cards) * 3); }
+.stagger-4 { animation-delay: calc(var(--animation-stagger-cards) * 4); }
+.stagger-5 { animation-delay: calc(var(--animation-stagger-cards) * 5); }
+.stagger-6 { animation-delay: calc(var(--animation-stagger-cards) * 6); }
+
+/* Scroll Animation Initial States */
+.scroll-animate-hidden {
+  opacity: var(--animation-opacity-hidden);
+}
+
+.scroll-animate-fade-up {
+  opacity: var(--animation-opacity-hidden);
+  transform: translateY(var(--animation-translate-y));
+}
+
+.scroll-animate-fade-left {
+  opacity: var(--animation-opacity-hidden);
+  transform: translateX(var(--animation-translate-x));
+}
+
+.scroll-animate-fade-right {
+  opacity: var(--animation-opacity-hidden);
+  transform: translateX(calc(var(--animation-translate-x) * -1));
+}
+
+/* Scroll Animation Container for Staggered Elements */
+.scroll-stagger-container > * {
+  opacity: var(--animation-opacity-hidden);
+  transform: translateY(var(--animation-translate-y));
+}
+
+/* Intersection Observer Fallback */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate-hidden,
+  .scroll-animate-fade-up,
+  .scroll-animate-fade-left,
+  .scroll-animate-fade-right,
+  .scroll-stagger-container > * {
+    opacity: var(--animation-opacity-visible) !important;
+    transform: none !important;
+  }
+}
+/* Track 
+Orders Page Specific Animations */
+.animate-slide-in-right {
+  animation: slideInRight 0.5s var(--animation-easing-smooth) forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: var(--animation-opacity-hidden);
+    transform: translateX(100%);
+  }
+  to {
+    opacity: var(--animation-opacity-visible);
+    transform: translateX(0);
+  }
+}
+
+.animate-bounce-gentle {
+  animation: bounceGentle 2s ease-in-out infinite;
+}
+
+@keyframes bounceGentle {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseStatus 3s ease-in-out infinite;
+}
+
+@keyframes pulseStatus {
+  0%, 100% {
+    opacity: var(--animation-opacity-visible);
+    transform: scale(1);
+  }
+  50% {
+    opacity: var(--animation-opacity-dimmed);
+    transform: scale(1.05);
+  }
+}
+
+/* Order Timeline Animations */
+.timeline-progress {
+  animation: progressFill 1s var(--animation-easing-smooth) forwards;
+}
+
+@keyframes progressFill {
+  from {
+    height: 0%;
+  }
+  to {
+    height: var(--progress-height, 0%);
+  }
+}
+
+/* Floating elements */
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
