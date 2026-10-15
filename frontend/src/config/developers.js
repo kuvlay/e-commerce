@@ -3,13 +3,13 @@
 
 export const DEVELOPERS = [
   {
-    name: "Aarish",
+    name: "Kuvlay Naman",
     role: "Full Stack Developer",
     links: {
-      linkedin: "https://linkedin.com/in/aarish-io",
-      github: "https://github.com/aarish-io",
-      email: "contact@aarish.io",
-      portfolio: "https://aarish.io"
+      linkedin: "https://www.linkedin.com/in/kuvlay-naman-96645135a/",
+      github: "https://github.com/kuvlay",
+      email: "nkuvlay@gmail.com",
+      portfolio: "https://github.com/kuvlay"
     }
   },
   {

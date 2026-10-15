@@ -1,54 +1,74 @@
 # E-Commerce Platform
 
-A full-stack e-commerce application with separate customer frontend, admin dashboard, and backend API.
+A collaborative full-stack shopping application with separate customer and administrator interfaces backed by an Express API. The repository covers the journey from browsing products to managing orders, alongside authentication, product reviews, and store administration.
 
-## Tech Stack
+**React · Vite · Tailwind CSS · Node.js · Express · MongoDB**
 
-**Frontend:** React, Vite, Tailwind CSS, Axios
-**Admin:** React, Vite, Tailwind CSS
-**Backend:** Node.js, Express, MongoDB, JWT, Nodemailer
-**Deployment:** Vercel (frontend/admin), Render (backend)
+[Portfolio](https://github.com/kuvlay)
 
-## Project Structure
+## Application areas
 
+| Area | Implementation in the source |
+| --- | --- |
+| Customer storefront | Product browsing, cart, wishlist, checkout pages, order tracking, profile and address screens |
+| Admin dashboard | Product management, orders, customers, reviews, messages, and dashboard views |
+| Authentication | JWT-based sessions, password handling, email verification flows, and Google sign-in integration |
+| Services | MongoDB persistence, Cloudinary images, email delivery, and Razorpay integration |
+
+External integrations require your own accounts and configuration. Their presence in the source is not a claim that live payments, email delivery, or every user flow has been validated in this copy.
+
+## Structure
+
+```text
+frontend/   Customer-facing React application
+admin/      Administrator React application
+backend/    Express API and domain modules
+docs/       Architecture, setup and troubleshooting notes
 ```
-├── frontend/     # Customer-facing application
-├── backend/      # REST API server
-├── admin/        # Admin dashboard
-└── package.json  # Root scripts
-```
 
-## Quick Start
+## Run locally
 
-### Install all dependencies:
+Requirements: Node.js, npm, a MongoDB database, and the service configuration used by the backend.
+
 ```bash
-npm install
+git clone https://github.com/kuvlay/e-commerce.git
+cd e-commerce
+npm run install:all
+cp backend/.env.example backend/.env
+cp frontend/.env.example frontend/.env.local
+cp admin/.env.example admin/.env.local
 ```
 
-### Setup environment variables:
-Create `.env` files in `backend/`, `frontend/`, and `admin/` with required configs.
+Fill in your own values before starting the application. Backend startup validates `MONGODB_URI`, `JWT_SECRET`, and the three Cloudinary settings. Configure email, Google sign-in, payment, and other provider keys only for features you intend to use; replace example administrator credentials with your own local configuration.
 
-### Run all services:
+For a consistent local setup, use:
+
+| Configuration | Value |
+| --- | --- |
+| Backend `PORT` | `5000` |
+| Backend `FRONTEND_URL` | `http://localhost:5173` |
+| Backend `ADMIN_URL` | `http://localhost:5175` |
+| Frontend and admin `VITE_BACKEND_URL` | `http://localhost:5000` |
+
+The backend code defaults to port 4000 when `PORT` is absent; the environment example uses 5000. Keep the client URLs aligned with your chosen backend port.
+
 ```bash
 npm run dev
 ```
 
-This starts frontend (port 5173), backend (port 5000), and admin (port 5175) concurrently.
+The root command starts all three services. The frontend uses port 5173 and the admin app uses 5175 by default. `npm run build` builds both React applications; `npm start` runs the backend.
 
-## Features
+## Verification and status
 
-- User authentication with email verification
-- Product catalog with search and filters
-- Shopping cart and wishlist
-- Order management
-- Admin dashboard for products, orders, and users
-- Responsive design
+The repository contains Vitest tests in the application directories. A fresh dependency install, build, and end-to-end test run were not performed for this documentation update. The backend npm test script uses Windows-style environment assignment, so other shells may need an equivalent command. Several inherited root utility scripts refer to files not present in the source; inspect the specific script before relying on it.
 
-## License
+This remains a development portfolio project with external service dependencies, not a claim of a production-operated store or measured business results.
 
-Educational project.
+<details>
+<summary>Credits and project history</summary>
 
+Source lineage: [aarish-io/e-commerce](https://github.com/aarish-io/e-commerce). The source history records contributions from Aarish and Aftab / `aftab-ansari2005`; this is collaborative work. The clean copy preserves contributor details in [PROVENANCE.md](PROVENANCE.md) and excludes credential-bearing history and IDE records.
 
-## Provenance
+The original README described this as an educational project, and several package manifests declare ISC. Those declarations are retained; no new license or sole-author claim is made.
 
-Clean portfolio copy of [aarish-io/e-commerce](https://github.com/aarish-io/e-commerce), imported at the source owner's request. Original contributors include Aarish and Aftab; see [PROVENANCE.md](PROVENANCE.md). Credential-bearing configuration and IDE artifacts are excluded, and database URLs in documentation use placeholders. The original educational-project license statement above is retained; no additional license is granted.
+</details>
