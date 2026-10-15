@@ -1,5 +1,7 @@
 # ✅ All Users Deleted - Ready for Live Site Testing!
 
+> Historical project note retained for context. Its completion, testing, deployment, and numerical findings are inherited records, not current verification. Paths below are relative to the repository root; confirm them against the current source before acting.
+
 ## 🗑️ Database Cleaned Successfully
 
 **Result:**
@@ -52,8 +54,8 @@ While you're in Render's Environment tab, delete these duplicate/unused variable
 
 ## ✅ Keep These Variables (Already Correct):
 
-Don't touch these - they're correct:
-- ✅ `EMAIL_USER=a.aarish312@gmail.com`
+Configure these values for your own development environment:
+- ✅ `EMAIL_USER=your-email@example.com`
 - ✅ `EMAIL_PASSWORD=YOUR_EMAIL_APP_PASSWORD`
 - ✅ `SKIP_EMAIL_VERIFICATION=false`
 - ✅ `NODE_ENV=production`

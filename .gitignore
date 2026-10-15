@@ -103,3 +103,6 @@ static/uploads/
 *.key
 *.pem
 !PROVENANCE.md
+
+# Generated Vite configuration bundles
+**/vite.config.*.timestamp-*.mjs

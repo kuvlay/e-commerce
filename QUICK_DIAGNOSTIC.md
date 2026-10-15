@@ -1,5 +1,7 @@
 # ✅ Quick Diagnostic - What's Actually Wrong
 
+> Run the commands from the repository root and configure your own service values. Addresses shown in environment examples are placeholders.
+
 Since `VITE_BACKEND_URL` is correct, let me diagnose the real issue.
 
 ## 🔍 Most Likely Issues:
@@ -70,7 +72,7 @@ After you try to register on production:
 
 Run this script to check if user was created:
 ```powershell
-cd C:\Users\Aarish\Desktop\e-commerce\backend
+cd backend
 node tools/user-status.js
 ```
 
@@ -148,7 +150,7 @@ Based on localhost working perfectly, I bet:
 **Verify these are EXACTLY correct:**
 ```
 AWAIT_EMAIL_SENDING = false  (NOT true!)
-EMAIL_USER = a.aarish312@gmail.com
+EMAIL_USER = your-email@example.com
 EMAIL_PASSWORD = YOUR_EMAIL_APP_PASSWORD
 SKIP_EMAIL_VERIFICATION = false
 NODE_ENV = production
@@ -195,7 +197,7 @@ This will show exactly what's happening (or not happening).
 After trying to register:
 
 ```powershell
-cd C:\Users\Aarish\Desktop\e-commerce\backend
+cd backend
 node tools/user-status.js
 ```
 

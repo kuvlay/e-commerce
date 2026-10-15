@@ -82,7 +82,7 @@ PORT
 
 ```env
 # Email Configuration (MUST HAVE)
-EMAIL_USER=a.aarish312@gmail.com
+EMAIL_USER=your-email@example.com
 EMAIL_PASSWORD=YOUR_EMAIL_APP_PASSWORD
 
 # Email Settings (MUST HAVE)
@@ -174,7 +174,7 @@ Please take screenshots and share:
 
 **Backend (Render):**
 ```env
-EMAIL_USER=a.aarish312@gmail.com       # ✅ MUST MATCH your Gmail
+EMAIL_USER=your-email@example.com       # ✅ MUST MATCH your Gmail
 EMAIL_PASSWORD=YOUR_EMAIL_APP_PASSWORD        # ✅ MUST BE App Password
 SKIP_EMAIL_VERIFICATION=false          # ✅ MUST BE false
 AWAIT_EMAIL_SENDING=false              # ✅ MUST BE false (like localhost)

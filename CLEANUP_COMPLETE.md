@@ -1,5 +1,7 @@
 # ✅ Project Cleanup Complete!
 
+> Historical project note retained for context. Its completion, testing, deployment, and numerical findings are inherited records, not current verification. Paths below are relative to the repository root; confirm them against the current source before acting.
+
 ## 🎉 What I Did
 
 ### 1. Organized Project Structure
@@ -80,7 +82,7 @@ I've opened a guide (`ENV_VARIABLES_GUIDE.md`) that explains:
 
 **Backend (Render) - Must Have:**
 ```
-EMAIL_USER = a.aarish312@gmail.com
+EMAIL_USER = your-email@example.com
 EMAIL_PASSWORD = YOUR_EMAIL_APP_PASSWORD
 SKIP_EMAIL_VERIFICATION = false
 AWAIT_EMAIL_SENDING = false  ← This makes it work like localhost!
